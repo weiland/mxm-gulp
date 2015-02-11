@@ -1,3 +1,5 @@
+! Experimental branch to include incremental less build from this SO post (http://stackoverflow.com/questions/26628421/incremental-gulp-less-build/28122327?noredirect=1#comment45211347_28122327) and this repo (https://github.com/tuelsch/perfect-less-build).
+
 # mxm-gulp
 
 The buildsystem we use at maxomedia.
