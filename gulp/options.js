@@ -1,4 +1,4 @@
-var assets = '../Assets'; // Relative to gulpfile.js
+var assets = 'test/output'; // Relative to gulpfile.js
 var webassets = '/project/media/Assets'; // Relative to webroot
 
 module.exports = {
@@ -8,10 +8,8 @@ module.exports = {
 
 	// Less settings
 	less: {
-		src: 'less/**/*.less', // Relative to gulpfile.js
-		main: 'less/main.less', // Relative to gulpfile.js
+		src: 'test/less/**/*.less', // Relative to gulpfile.js
 		dest: assets + '/css',
-		suffix: '.min',
 		autoprefix: [
 			'Android >= 2.3',
 			'Chrome >= 20',
@@ -28,33 +26,27 @@ module.exports = {
 	js: {
 		bundles: [
 			{
-				name: 'Header Scripts',
-				src: 'js/header.js' // Relative to gulpfile.js
-			},
-			{
-				name: 'Angular App',
-				src: 'js/app.js' // Relative to gulpfile.js
+				src: './test/js/autor.js' // Relative to gulpfile.js
 			}
 		],
-		suffix: '.min',
-		dest: assets
+		dest: './x'
 	},
 
 	// Jade settings
 	jade: {
-		src: 'jade/**/*.jade', // Relative to gulpfile.js
-		views: 'jade/views/**/*.jade', // Relative to gulpfile.js
-		dest: '../Styleguide', // Relative to gulpfile.js
+		src: 'test/jade/**/*.jade', // Relative to gulpfile.js
+		views: 'test/jade/views/**/*.jade', // Relative to gulpfile.js
+		dest: assets, // Relative to gulpfile.js
 		minify: false
 	},
 
 	iconfont: {
-		src: 'svg/**/*.svg', // Relative to gulpfile.js
+		src: 'test/svg/**/*.svg', // Relative to gulpfile.js
 		dest: assets + '/fonts',
 		name: 'fonticons',
 		class: 'gfx',
 		template: 'gulp/utils/iconfont-template.less', // Relative to gulpfile.js
-		lessDest: 'less/scaffolding/', // Relative to gulpfile.js
+		lessDest: 'test/less/', // Relative to gulpfile.js
 		rootPath: webassets + '/fonts/' // Relative to web root
 	}
 }
