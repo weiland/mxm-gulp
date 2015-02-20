@@ -9,7 +9,7 @@
   font-style: normal;
 }
 
-.font-styling(){
+.font-styling() {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
@@ -26,31 +26,19 @@
 }
 
 .<%= className %>{
-  &:before, &.after:after{
-    .font-styling();
-  }
-  &:before{margin-right: 0.5em;}
-  &.after {
-    &:before{display: none;}
-    &:after {margin-left: 0.5em;}
-  }
+  &:before { .font-styling(); }
+}
+
+.after {
+  &:after { .font-styling(); }
+  &:before { content: none; }
 }
 
 .<%= className %>(@class, @element: before){
-  & when(@element = before){
-    &:before{
-      .glyphmap();
-    }
-  }
-  
-  & when(@element = after){
-    &:after{
-      .glyphmap();
-    }
-  }
+  &:@{element} {
+    & when (@element = before) { &:extend(.gfx:before all); }
+    & when (@element = after) { &:extend(.after:after, .after:before); }
 
-  .glyphmap(){
-    .font-styling();
     <% _.each(glyphs, function(glyph) { %>& when (@class = <%= glyph.name %>){ content: "\<%= glyph.codepoint.toString(16).toUpperCase() %>" }
     <% }); %>
   }
